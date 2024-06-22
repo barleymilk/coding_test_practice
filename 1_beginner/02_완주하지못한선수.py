@@ -2,11 +2,15 @@
 
 def solution(participant, completion):
     hash = {}
+
+    # {참가자이름 : 명수} 해시 만들기
     for p in participant:
         if p in hash:
             hash[p] += 1
         else:
             hash[p] = 1
+
+    # 완주자 -> 해시에서 삭제
     for c in completion:
         if hash[c] == 1:
             del hash[c]
@@ -14,9 +18,6 @@ def solution(participant, completion):
             hash[c] -= 1
 
     return list(hash.keys())[0]
-    # for c in completion:
-    #     participant.remove(c)
-    # return participant[0]
 
 print(solution(["leo", "kiki", "eden"], ["eden", "kiki"])) # leo
 print(solution(["marina", "josipa", "nikola", "vinko", "filipa"], ["josipa", "filipa", "marina", "nikola"])) # vinko
